@@ -3,7 +3,7 @@ from kafka import KafkaProducer
 
 def publish_message(kafka_producer, topic_name, key, value):
     try:
-        key_bytes = bytes(key, encoding='utf-8')
+        key_bytes = bytes(str(key), encoding='utf-8')
         value_bytes = bytes(value, encoding='utf-8')
         kafka_producer.send(topic_name, key=key_bytes, value=value_bytes)
         kafka_producer.flush()
